@@ -350,7 +350,7 @@ public static int id =0;
                  usuario = r.getString("correo");
                  contr=r.getString("contrasena");
                  nombre =r.getString("nombre");
-                
+                 
             }
             
             if(encontrar){
@@ -371,7 +371,7 @@ public static int id =0;
         System.out.println(e.getMessage());
         }
         }else{
-            JOptionPane.showMessageDialog(rootPane, "Existe un campo vacio");        
+            JOptionPane.showMessageDialog(rootPane, "Existe un campo vacio favor de verificar");        
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
