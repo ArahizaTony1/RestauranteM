@@ -117,6 +117,8 @@ primary key(IDusuario)
 insert into usuarioAdministrador(nombre,apellidop,apellidom,correo,contrasena)
 values('Jose','Garcia ','Araiza','jose.araiza@upam.edu.mx','1234'),('x','x','x','x','x');
 
+insert into restaurante(Nombre,Nmesas,direccion)
+values('x','x','x',);
 
 drop PROCEDURE if exists  seguridad;
 CREATE PROCEDURE seguridad (IN u VARCHAR(45),IN con VARCHAR(45))
@@ -125,3 +127,6 @@ SELECT * from usuarioAdministrador where correo=u && contrasena=con limit 1;
 END;
 
 call seguridad('jose.araiza@upam.edu.mx','1234');
+
+4F4F4F
+
