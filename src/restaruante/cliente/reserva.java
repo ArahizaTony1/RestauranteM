@@ -23,6 +23,19 @@ public class reserva extends javax.swing.JFrame {
     public reserva() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        jPasswordField1.setVisible(false);
+        jLabel6.setVisible(false );
+        jLabel2.setVisible(false);
+        jSeparator2.setVisible(false);
+        jButton1.setVisible(false);
+        index usuario= new index();
+        jTextField1.setText(usuario.nombres);
+        
+        
+        
+        
+        
         PreparedStatement ps =null;
             ResultSet rs;
             conexion cone = new conexion();
@@ -455,7 +468,8 @@ public String  radioOpcion(){
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
        
-       
+        index usuario=new index();
+        String id =""+usuario.id;
         String area=radioOpcion();
         String fecha,restaurante;
         fecha=jTextField2.getText();
@@ -464,13 +478,13 @@ public String  radioOpcion(){
         conexion cone = new conexion ();
         Connection reg=cone.conexion();
         
-        String sql="insert into Reserva(TipoReserva,fecha,IDrestaurante)" + "values(?,?,?) ";
+        String sql="insert into Reserva(TipoReserva,fecha,IDrestaurante,IDcliente)" + "values(?,?,?,?) ";
         try{
         PreparedStatement pst=reg.prepareStatement(sql);
         pst.setString(1,area);
         pst.setString(2,fecha);
         pst.setString(3,restaurante);
-       
+        pst.setString(4,id);
         int n =pst.executeUpdate();
         if (n>0){       
             
