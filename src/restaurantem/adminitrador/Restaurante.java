@@ -27,7 +27,8 @@ public class Restaurante extends javax.swing.JFrame {
         jLabel2.setVisible(false);
         jSeparator2.setVisible(false);
         jButton1.setVisible(false);
-       
+        Index usuario= new Index();
+        jTextField1.setText(usuario.nombres);
     }
 
     /**
@@ -447,7 +448,7 @@ public class Restaurante extends javax.swing.JFrame {
         nombre=jTextField3.getText();
         direccion=jTextArea1.getText();
         numeroM=Integer.parseInt(jTextField2.getText());
-        mesas =Integer.toString(numeroM);
+        mesas =""+numeroM;
         String sql="insert into restaurante(Nombre,Nmesas,direccion)"+"values(?,?,?) ";
         try{
         PreparedStatement pst=reg.prepareStatement(sql);
@@ -457,7 +458,11 @@ public class Restaurante extends javax.swing.JFrame {
        
         int n =pst.executeUpdate();
         if (n>0){       
+            
         JOptionPane.showMessageDialog(null, "Datos guardados con exito "); 
+        jTextField3.setText("");
+        jTextField2.setText("");
+        jTextArea1.setText("");
     }                                        
      }catch (SQLException e) {         
         JOptionPane.showMessageDialog(null, "error de conexion "+e); 
