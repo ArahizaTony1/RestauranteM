@@ -14,7 +14,6 @@ drop table if exists Reserva;
 create table if not exists Reserva(
 IDreserva int not null auto_increment,
 TipoReserva varchar(2)not null,
-Direccion varchar(45)not null,
 fecha date  not null ,
 IDrestaurante varchar(45) not null,    
 primary key(IDreserva),
