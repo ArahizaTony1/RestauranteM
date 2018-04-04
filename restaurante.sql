@@ -128,6 +128,11 @@ BEGIN
 SELECT * from usuarioAdministrador where correo=u && contrasena=con limit 1;
 END;
 
+CREATE PROCEDURE seguridadCliente (IN u VARCHAR(45),IN con VARCHAR(45))
+BEGIN
+SELECT * from cliente where correo=u && contrasena=con limit 1;
+END;
+
 call seguridad('jose.araiza@upam.edu.mx','1234');
 use restauranteM;
 

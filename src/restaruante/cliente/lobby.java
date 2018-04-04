@@ -22,7 +22,7 @@ public class lobby extends javax.swing.JFrame {
         jPasswordField1.setVisible(false);
         jSeparator2.setVisible(false);
         jButton1.setVisible(false);
-         jLabel2.setText(ind.nombres);
+        jLabel2.setText(ind.nombres);
     }
 
     /**
