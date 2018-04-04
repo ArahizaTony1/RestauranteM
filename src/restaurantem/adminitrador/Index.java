@@ -78,7 +78,6 @@ public static int id =0;
 
         jTextField1.setFont(new java.awt.Font("Cabin", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Ingrese Usuario");
         jTextField1.setBorder(null);
 
         jPasswordField1.setFont(new java.awt.Font("Cabin", 0, 14)); // NOI18N

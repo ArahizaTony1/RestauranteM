@@ -257,6 +257,11 @@ public class Restaurante extends javax.swing.JFrame {
         jTextField3.setFont(new java.awt.Font("Cabin", 0, 14)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(153, 153, 153));
         jTextField3.setBorder(null);
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -493,6 +498,10 @@ public class Restaurante extends javax.swing.JFrame {
         validar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel26MouseClicked
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments
