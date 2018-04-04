@@ -476,8 +476,9 @@ public class lobby extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        // TODO add your handling code here:
-        
+       reserva reser = new reserva();
+       reser.setVisible(true);
+       this.dispose();
         
     }//GEN-LAST:event_jLabel7MouseClicked
 
