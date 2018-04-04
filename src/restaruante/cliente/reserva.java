@@ -8,6 +8,8 @@ package restaruante.cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,6 +46,16 @@ public class reserva extends javax.swing.JFrame {
         }
     }
 public static String opcion=null;
+public String  radioOpcion(){
+      
+       if (jRadioButton1.isSelected()){
+       return  "F";
+       }else if(jRadioButton2.isSelected()){
+        return "NF";
+       }else{}
+       return null;
+       
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -443,7 +455,33 @@ public static String opcion=null;
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
        
-
+       
+        String area=radioOpcion();
+        String fecha,restaurante;
+        fecha=jTextField2.getText();
+        restaurante=(String) jComboBox1.getSelectedItem();
+        
+        conexion cone = new conexion ();
+        Connection reg=cone.conexion();
+        
+        String sql="insert into Reserva(TipoReserva,fecha,IDrestaurante)" + "values(?,?,?) ";
+        try{
+        PreparedStatement pst=reg.prepareStatement(sql);
+        pst.setString(1,area);
+        pst.setString(2,fecha);
+        pst.setString(3,restaurante);
+       
+        int n =pst.executeUpdate();
+        if (n>0){       
+            
+        JOptionPane.showMessageDialog(null, "Datos guardados con exito "); 
+        
+    }                                        
+     }catch (SQLException e) {         
+        JOptionPane.showMessageDialog(null, "error de conexion "+e); 
+          
+    }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked

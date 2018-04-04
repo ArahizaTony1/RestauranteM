@@ -10,16 +10,6 @@ direccion varchar(45),
 primary key(Nombre)
 );
 
-drop table if exists Reserva;
-create table if not exists Reserva(
-IDreserva int not null auto_increment,
-TipoReserva varchar(2)not null,
-fecha date  not null ,
-IDrestaurante varchar(45) not null,    
-primary key(IDreserva),
-FOREIGN KEY (IDrestaurante) REFERENCES restaurante(Nombre)
-);
-
 drop table if exists cliente;
 create table if not exists cliente(
 IDcliente int not null auto_increment,
@@ -28,14 +18,21 @@ correo varchar(50) not null unique,
 contrasena varchar(50)not null ,
 primary key(IDcliente)
 );
-drop table if exists clienteReserva;
-CREATE table if not exists clienteReserva(
-IDreserva int not null,
-IDcliente int not null,
-FOREIGN KEY (IDreserva) REFERENCES Reserva(IDreserva),
-FOREIGN KEY (IDcliente) REFERENCES cliente(IDcliente),
-primary key(IDcliente,IDreserva)
+
+drop table if exists Reserva;
+create table if not exists Reserva(
+IDreserva int not null auto_increment,
+TipoReserva varchar(2)not null,
+fecha date  not null ,
+IDrestaurante varchar(45) not null,
+IDcliente int not null ,    
+primary key(IDreserva),
+FOREIGN KEY (IDrestaurante) REFERENCES restaurante(Nombre),
+FOREIGN KEY (IDcliente) REFERENCES cliente(IDcliente)    
 );
+
+
+
 drop table if exists pago;
 create table if not exists pago(
 IDpago int not null auto_increment,
