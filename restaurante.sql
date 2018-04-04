@@ -25,6 +25,8 @@ drop table if exists cliente;
 create table if not exists cliente(
 IDcliente int not null auto_increment,
 nombre varchar(45),
+correo varchar(50) not null unique,
+contrasena varchar(50)not null ,
 primary key(IDcliente)
 );
 drop table if exists clienteReserva;
@@ -127,7 +129,15 @@ SELECT * from usuarioAdministrador where correo=u && contrasena=con limit 1;
 END;
 
 call seguridad('jose.araiza@upam.edu.mx','1234');
+use restauranteM;
 
-4F4F4F
-F56016
+insert into restaurante(Nombre,Nmesas,direccion)
+values('x',2,'x');
+insert into Reserva(TipoReserva,Direccion,fecha,IDrestaurante)
+values('x','x','2018-02-28',1);
+SELECT * from Reserva;
+
+
+-- 4F4F4F
+-- F56016
 
