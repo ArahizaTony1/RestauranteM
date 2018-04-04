@@ -111,4 +111,3 @@ contrasena varchar(45)not null ,
 primary key(IDusuario)
 );
 
-

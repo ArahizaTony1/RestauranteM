@@ -426,9 +426,9 @@ DefaultTableModel obj1 = new DefaultTableModel();
          obj1.addColumn("TipoReserva"); 
          obj1.addColumn("fecha"); 
          obj1.addColumn("IDrestaurante");
-         
+         obj1.addColumn("IDcliente");
         this.jTable1.setModel(obj1);
-        String [] datos = new String[4]; 
+        String [] datos = new String[5]; 
         conexion cone = new conexion();
         Connection reg=cone.conexion();
         String sql="SELECT * from Reserva;" ;
@@ -442,6 +442,7 @@ DefaultTableModel obj1 = new DefaultTableModel();
         datos [1]=rs.getString("TipoReserva");
         datos [2]=rs.getString("fecha");
         datos [3]=rs.getString("IDrestaurante");    
+        datos [4]=rs.getString("IDcliente");    
         
        
       

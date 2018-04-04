@@ -1,22 +1,14 @@
 use restauranteM;
-
-
-
-
+insert into restaurante(Nombre,Nmesas,direccion)
+values('x',2,'x');
 insert into cliente(nombre,correo,contrasena)
 values('x','x','x');
 
-insert into usuarioAdministrador(nombre,apellidop,apellidom,correo,contrasena)
-values('Jose','Garcia ','Araiza','jose.araiza@upam.edu.mx','1234'),('x','x','x','x','x');
+SELECT * from cliente;
+insert into Reserva(TipoReserva,fecha,IDrestaurante,IDcliente)
+values('x','2018-02-28','x',1);
 
-insert into restaurante(Nombre,Nmesas,direccion)
-values('x',2,'x');
 
-insert into restaurante(Nombre,Nmesas,direccion)
-values('x',2,'x');
-insert into Reserva(TipoReserva,Direccion,fecha,IDrestaurante)
-values('x','x','2018-02-28',1);
-SELECT * from restaurante;
+SELECT * from Reserva;
 
--- 4F4F4F
--- F56016
+insert into usuarioAdministrador(nombre,apellidop,apellidom,correo,contrasena)values('x','x','x','x','x');
