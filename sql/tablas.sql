@@ -4,11 +4,10 @@ use restauranteM;
 
 drop table if exists restaurante;
 create table if not exists restaurante(
-IDrestaurante int not null auto_increment,
 Nombre varchar(45) not null,
 Nmesas int ,
 direccion varchar(45),
-primary key(IDrestaurante)
+primary key(Nombre)
 );
 
 drop table if exists Reserva;
@@ -17,10 +16,11 @@ IDreserva int not null auto_increment,
 TipoReserva varchar(2)not null,
 Direccion varchar(45)not null,
 fecha date  not null ,
-IDrestaurante int not null,    
+IDrestaurante varchar(45) not null,    
 primary key(IDreserva),
-FOREIGN KEY (IDrestaurante) REFERENCES restaurante(IDrestaurante)
+FOREIGN KEY (IDrestaurante) REFERENCES restaurante(Nombre)
 );
+
 drop table if exists cliente;
 create table if not exists cliente(
 IDcliente int not null auto_increment,
@@ -114,3 +114,5 @@ correo varchar(45)not null unique,
 contrasena varchar(45)not null ,
 primary key(IDusuario)
 );
+
+
