@@ -7,8 +7,11 @@ package restaurantem.adminitrador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,6 +25,7 @@ public class reserva extends javax.swing.JFrame {
     public reserva() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
          jPasswordField1.setVisible(false);
         jLabel6.setVisible(false );
         jLabel2.setVisible(false);
@@ -29,8 +33,9 @@ public class reserva extends javax.swing.JFrame {
         jButton1.setVisible(false);
         Index usuario= new Index();
         jTextField1.setText(usuario.nombres);
+        
     }
-
+DefaultTableModel obj1 = new DefaultTableModel();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -250,7 +255,7 @@ public class reserva extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "", "", "", ""
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -417,7 +422,40 @@ public class reserva extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    
+         obj1.addColumn("IDreserva"); 
+         obj1.addColumn("TipoReserva"); 
+         obj1.addColumn("Direccion"); 
+         obj1.addColumn("fecha"); 
+         obj1.addColumn("IDrestaurante");
+         
+        this.jTable1.setModel(obj1);
+        String [] datos = new String[5]; 
+        conexion cone = new conexion();
+        Connection reg=cone.conexion();
+        String sql="SELECT * from Reserva;" ;
+      
+      
+        try {
+        Statement st = reg.createStatement();
+        ResultSet rs =st.executeQuery(sql);
+        while (rs.next()){
+        datos [0]=rs.getString("IDreserva");    
+        datos [1]=rs.getString("TipoReserva");
+        datos [2]=rs.getString("Direccion");    
+        datos [3]=rs.getString("fecha");
+        datos [4]=rs.getString("IDrestaurante");    
+        
+       
+      
+        
+        obj1.addRow(datos);
+        }
+        jTable1.setModel(obj1);
+    }   catch (SQLException e){ 
+        JOptionPane.showMessageDialog(null, "error de conexion "+e);  
+    }   
+
+   
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
