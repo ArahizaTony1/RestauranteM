@@ -91,7 +91,7 @@ public int mesaMetodo (int x,String restaurante){
                 
                 return x;
             }else{
-                JOptionPane.showMessageDialog(rootPane, "no hay tantas mesas");
+                JOptionPane.showMessageDialog(rootPane, "no hay tantas mesas o no se aceptan numeros negativos");
             }
             }else{
                 JOptionPane.showMessageDialog(rootPane, "Acceso Denegado!!");
@@ -307,9 +307,9 @@ public int mesaMetodo (int x,String restaurante){
                 .addComponent(jLabel18)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -548,21 +548,23 @@ public int mesaMetodo (int x,String restaurante){
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
        
-        index usuario=new index();
-        String id =""+usuario.id;
-        String area=radioOpcion();
-        String fecha,restaurante;
-        restaurante=(String) jComboBox1.getSelectedItem();
-        int mesaentero=Integer.parseInt(jTextField3.getText());
-        int resultadoMesa= mesaMetodo(mesaentero,restaurante);
-        System.out.println(""+resultadoMesa);
-        String mesaString=""+resultadoMesa;
-        fecha=jTextField2.getText();
-        if(resultadoMesa==0){
-        JOptionPane.showMessageDialog(rootPane, "Favor de colocar un valor valido");
-        jTextField3.setText("");
+        index usuario=new index();//llamamos los valores del usuario con su identificador 
+        String id =""+usuario.id;//ya que es string entonces lo convertimos 
+        String area=radioOpcion();//colocamos si es area de fumador y no fumador 
+        String fecha,restaurante;//hacemos dos valores String 
+        restaurante=(String) jComboBox1.getSelectedItem();//esta es la forma de escojer un valor de la base de datos a un checkbox 
+        int mesaentero=Integer.parseInt(jTextField3.getText());//aqui vamos a cachar el valor para escojer mesa
+        int resultadoMesa= mesaMetodo(mesaentero,restaurante);//lo asignamos a una variable donde se va cachar 
+        System.out.println(""+resultadoMesa);//hacemos una prueba a ver que arroja el metodo
+        String mesaString=""+resultadoMesa;//asignamos lo que tenga la variable resultadomesa
+        fecha=jTextField2.getText();//cachamo este valor 
+        
+        if(resultadoMesa==0||mesaentero<=0){//si mesaMetodo no se cumple entonces retorna 0  y esto hacemos para que pida realmente un numero valido 
+        JOptionPane.showMessageDialog(rootPane, "Favor de colocar un valor valido o numero positivo");//aqui un mensaje 
+        jTextField3.setText("");//vaciomos el campo para que vea su error
         }
         else{
+        //insertamos los valores    
         conexion cone = new conexion ();
         Connection reg=cone.conexion();
         String sql="insert into Reserva(TipoReserva,fecha,mesa,IDrestaurante,IDcliente)" + "values(?,?,?,?,?) ";
@@ -575,8 +577,11 @@ public int mesaMetodo (int x,String restaurante){
         pst.setString(5,id);
         int n =pst.executeUpdate();
         if (n>0){       
-        JOptionPane.showMessageDialog(null, "Datos guardados con exito "); 
-         }                                           
+        JOptionPane.showMessageDialog(null, "Reserva hecha con exito");
+        lobby lob =new lobby();
+        lob.setVisible(true);
+        this.dispose();
+       }                                           
         }catch (SQLException e) {         
         JOptionPane.showMessageDialog(null, "error de conexion "+e); 
           }

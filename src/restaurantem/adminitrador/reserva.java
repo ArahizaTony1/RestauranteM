@@ -26,7 +26,7 @@ public class reserva extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
-         jPasswordField1.setVisible(false);
+        jPasswordField1.setVisible(false);
         jLabel6.setVisible(false );
         jLabel2.setVisible(false);
         jSeparator2.setVisible(false);
@@ -428,35 +428,27 @@ DefaultTableModel obj1 = new DefaultTableModel();
          obj1.addColumn("mesa");
          obj1.addColumn("IDrestaurante");
          obj1.addColumn("IDcliente");
-        this.jTable1.setModel(obj1);
-        String [] datos = new String[6]; 
-        conexion cone = new conexion();
-        Connection reg=cone.conexion();
-        String sql="SELECT * FROM VistaR" ;
-      
-      
-        try {
-        Statement st = reg.createStatement();
-        ResultSet rs =st.executeQuery(sql);
-        while (rs.next()){
-        datos [0]=rs.getString("IDreserva");    
-        datos [1]=rs.getString("TipoReserva");
-        datos [2]=rs.getString("fecha");
-        datos [3]=rs.getString("mesa");
-        datos [4]=rs.getString("IDrestaurante");    
-        datos [5]=rs.getString("IDcliente");    
-        
-       
-      
-        
-        obj1.addRow(datos);
+         this.jTable1.setModel(obj1);
+         String [] datos = new String[6]; 
+         conexion cone = new conexion();
+         Connection reg=cone.conexion();
+         String sql="SELECT * FROM VistaR" ;
+         try {
+         Statement st = reg.createStatement();
+         ResultSet rs =st.executeQuery(sql);
+         while (rs.next()){
+         datos [0]=rs.getString("IDreserva");    
+         datos [1]=rs.getString("TipoReserva");
+         datos [2]=rs.getString("fecha");
+         datos [3]=rs.getString("mesa");
+         datos [4]=rs.getString("IDrestaurante");    
+         datos [5]=rs.getString("IDcliente");    
+         obj1.addRow(datos);
         }
         jTable1.setModel(obj1);
-    }   catch (SQLException e){ 
+        }catch (SQLException e){ 
         JOptionPane.showMessageDialog(null, "error de conexion "+e);  
-    }   
-
-   
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

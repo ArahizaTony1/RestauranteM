@@ -22,11 +22,13 @@ public class Restaurante extends javax.swing.JFrame {
     public Restaurante() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //al realizar el diseño se me hizo imposible modificar la interfaz y para que se vea mas atractiva entonces oculte los campos 
         jPasswordField1.setVisible(false);
         jLabel6.setVisible(false );
         jLabel2.setVisible(false);
         jSeparator2.setVisible(false);
         jButton1.setVisible(false);
+        //en esta parte pasamos parametros de la otra ventana
         Index usuario= new Index();
         jTextField1.setText(usuario.nombres);
     }
@@ -426,7 +428,7 @@ public class Restaurante extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         boolean respuesta=true;
-       
+       //lo mismo para poder ocultar esa ventana 
         if(evt.getClickCount()==1){
             jLabel20.setVisible(true);
             jLabel21.setVisible(true);
@@ -473,24 +475,16 @@ public class Restaurante extends javax.swing.JFrame {
         pst.setString(1,nombre);
         pst.setString(2,mesas);
         pst.setString(3,direccion);
-       
         int n =pst.executeUpdate();
         if (n>0){       
-            
         JOptionPane.showMessageDialog(null, "Datos guardados con exito "); 
         jTextField3.setText("");
         jTextField2.setText("");
         jTextArea1.setText("");
-    }                                        
-     }catch (SQLException e) {         
+                }                                        
+        }catch (SQLException e) {         
         JOptionPane.showMessageDialog(null, "error de conexion "+e); 
-          
-    }
-        
-                 
-
-
-
+        }   
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked

@@ -347,35 +347,33 @@ public static int id =0;
                 int IDadmi=0;
             
             while(r.next()){ 
-                //entra
-            encontrar=true; 
+                 encontrar=true; //entra
                  IDadmi = r.getInt("IDusuario");//cachamos de la base de datos a las variables anteriores
                  usuario = r.getString("correo");
                  contr=r.getString("contrasena");
                  nombre =r.getString("nombre");
-                 
             }
-            
-            if(encontrar){
-               id=IDadmi;//nos llevamos estas variables para el siguiente frame ya que las vamos a necesitar para rellenar fk
-               no=usuario;
-               psw=contr;
-               nombres=nombre;
-            
-                JOptionPane.showMessageDialog(rootPane, "Acceso concedido ...");
-                  
-               validacion v = new validacion();//mandamos a desplegar la siguiente ventana
-               v.setVisible(true);
-               this.dispose();
-            }else{
+            if(encontrar)
+            {
+                 id=IDadmi;//nos llevamos estas variables para el siguiente frame ya que las vamos a necesitar para rellenar fk
+                 no=usuario;
+                 psw=contr;
+                 nombres=nombre;
+                 JOptionPane.showMessageDialog(rootPane, "Acceso concedido ...");
+                 validacion v = new validacion();//mandamos a desplegar la siguiente ventana
+                 v.setVisible(true);
+                 this.dispose();
+            }
+            else
+            {
                 JOptionPane.showMessageDialog(rootPane, "Acceso Denegado!!");
             }
-        }catch(SQLException e){
-        System.out.println(e.getMessage());
-        }
-        }else{
+           }catch(SQLException e){
+            System.out.println(e.getMessage());
+            }
+            }else{
             JOptionPane.showMessageDialog(rootPane, "Existe un campo vacio favor de verificar");        
-        }
+            }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

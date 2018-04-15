@@ -20,12 +20,12 @@ public class validacion extends javax.swing.JFrame {
         Index in = new Index();
         
         jLabel20.setVisible(false);
-            jLabel21.setVisible(false);
-            jLabel22.setVisible(false);
+        jLabel21.setVisible(false);
+        jLabel22.setVisible(false);
         jLabel2.setText(in.nombres);
-             jLabel16.setVisible(false);
-             jLabel6.setVisible(false);
-             jSeparator2.setVisible(false);
+        jLabel16.setVisible(false);
+        jLabel6.setVisible(false);
+        jSeparator2.setVisible(false);
         jButton1.setVisible(false);
         
     }
