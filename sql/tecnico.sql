@@ -15,3 +15,8 @@ END;
 SELECT * from cliente;
 
 call seguridadCliente('jose.araiza@upam.edu.mx','1234');
+
+CREATE VIEW VistaR AS SELECT * FROM Reserva	;
+
+SELECT * FROM VistaR;
+

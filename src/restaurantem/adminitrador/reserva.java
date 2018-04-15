@@ -431,7 +431,7 @@ DefaultTableModel obj1 = new DefaultTableModel();
         String [] datos = new String[5]; 
         conexion cone = new conexion();
         Connection reg=cone.conexion();
-        String sql="SELECT * from Reserva;" ;
+        String sql="SELECT * FROM VistaR" ;
       
       
         try {

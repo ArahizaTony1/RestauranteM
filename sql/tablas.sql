@@ -24,6 +24,7 @@ create table if not exists Reserva(
 IDreserva int not null auto_increment,
 TipoReserva varchar(2)not null,
 fecha date  not null ,
+mesa int not null,
 IDrestaurante varchar(45) not null,
 IDcliente int not null ,    
 primary key(IDreserva),
