@@ -22,9 +22,9 @@ public class Index extends javax.swing.JFrame {
      */
     public Index() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); // colocamos esto para que se centre en la pantalla
     }
-public static String no=null;
+public static String no=null; //vamos a ocupar estos valores para mandarlos al siguiente frame que es validar
 public static String psw=null;
 public static String nombres =null;
 public static int id =0;
@@ -312,6 +312,7 @@ public static int id =0;
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         boolean respuesta=true;
+        //esto es para aparecer lo que tiene la ventana del mundo y la calculadora
         if(evt.getClickCount()==1){
             jLabel20.setVisible(true);
             jLabel21.setVisible(true);
@@ -330,22 +331,25 @@ public static int id =0;
         // TODO add your handling code here:
         
         
-         if(jTextField1.getText().length()>0 && jPasswordField1.getText().length()>0){
+         if(jTextField1.getText().length()>0 && jPasswordField1.getText().length()>0){//sirve para validar que no se queden campos vacios
         try{
+            //esto es la conexion 
             conexion cone = new conexion();
             Connection reg=cone.conexion();
-            Statement s =  reg.createStatement();
+            Statement s =  reg.createStatement(); 
+            //hacemos la consulta o la llamada al sistema
             ResultSet r = s.executeQuery("call seguridad('"+jTextField1.getText()+"','"+jPasswordField1.getText()+"')");
             boolean encontrar = false;
-            
+            //creamos valores para que en la base de datos lo pase a variables 
                 String usuario= null;
                 String contr= null;
                 String nombre= null;
                 int IDadmi=0;
             
             while(r.next()){ 
+                //entra
             encontrar=true; 
-                 IDadmi = r.getInt("IDusuario");
+                 IDadmi = r.getInt("IDusuario");//cachamos de la base de datos a las variables anteriores
                  usuario = r.getString("correo");
                  contr=r.getString("contrasena");
                  nombre =r.getString("nombre");
@@ -353,14 +357,14 @@ public static int id =0;
             }
             
             if(encontrar){
-               id=IDadmi;
+               id=IDadmi;//nos llevamos estas variables para el siguiente frame ya que las vamos a necesitar para rellenar fk
                no=usuario;
                psw=contr;
                nombres=nombre;
             
                 JOptionPane.showMessageDialog(rootPane, "Acceso concedido ...");
                   
-               validacion v = new validacion();
+               validacion v = new validacion();//mandamos a desplegar la siguiente ventana
                v.setVisible(true);
                this.dispose();
             }else{
@@ -377,11 +381,11 @@ public static int id =0;
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         // TODO add your handling code here:
-        this.setState(Index.ICONIFIED);
+        this.setState(Index.ICONIFIED);//hacer que se minimice
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        System.exit(0);
+        System.exit(0);//cierra todo
     }//GEN-LAST:event_jLabel24MouseClicked
 
     /**

@@ -20,3 +20,7 @@ CREATE VIEW VistaR AS SELECT * FROM Reserva	;
 
 SELECT * FROM VistaR;
 
+CREATE PROCEDURE SeleccionarMesa (IN u VARCHAR(45))
+BEGIN
+SELECT Nmesas from restaurante where Nombre=u ;
+END;

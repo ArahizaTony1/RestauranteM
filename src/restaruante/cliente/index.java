@@ -588,7 +588,7 @@ public class index extends javax.swing.JFrame {
         int n =pst.executeUpdate();
         if (n>0){       
             
-        JOptionPane.showMessageDialog(null, "Datos guardados con exito "); 
+        
         Statement s =  reg.createStatement();
         ResultSet r = s.executeQuery("call seguridadCliente('"+jTextField3.getText()+"','"+jPasswordField3.getText()+"')");
         boolean encontrar = false;
@@ -613,8 +613,7 @@ public class index extends javax.swing.JFrame {
                no=usuario;
                psw=contr;
                nombres=nombrs;
-            
-              JOptionPane.showMessageDialog(rootPane, "Acceso concedido ...");
+              JOptionPane.showMessageDialog(null, "Datos guardados con exito "); 
                   
                lobby v = new lobby();
                v.setVisible(true);
