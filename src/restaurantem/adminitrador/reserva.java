@@ -425,10 +425,11 @@ DefaultTableModel obj1 = new DefaultTableModel();
          obj1.addColumn("IDreserva"); 
          obj1.addColumn("TipoReserva"); 
          obj1.addColumn("fecha"); 
+         obj1.addColumn("mesa");
          obj1.addColumn("IDrestaurante");
          obj1.addColumn("IDcliente");
         this.jTable1.setModel(obj1);
-        String [] datos = new String[5]; 
+        String [] datos = new String[6]; 
         conexion cone = new conexion();
         Connection reg=cone.conexion();
         String sql="SELECT * FROM VistaR" ;
@@ -441,8 +442,9 @@ DefaultTableModel obj1 = new DefaultTableModel();
         datos [0]=rs.getString("IDreserva");    
         datos [1]=rs.getString("TipoReserva");
         datos [2]=rs.getString("fecha");
-        datos [3]=rs.getString("IDrestaurante");    
-        datos [4]=rs.getString("IDcliente");    
+        datos [3]=rs.getString("mesa");
+        datos [4]=rs.getString("IDrestaurante");    
+        datos [5]=rs.getString("IDcliente");    
         
        
       

@@ -88,7 +88,7 @@ public int mesaMetodo (int x){
             if(encontrar){
             mesas=mesa;
             if (x<=mesas){
-                JOptionPane.showMessageDialog(rootPane, "Acceso concedido ...");
+                
                 return x;
             }else{
                 JOptionPane.showMessageDialog(rootPane, "no hay tantas mesas");
