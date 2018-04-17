@@ -10,5 +10,5 @@ package restaruante.cliente;
  * @author arahiza
  */
 public class mesa {
-    
+  
 }

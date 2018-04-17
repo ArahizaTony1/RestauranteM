@@ -5,6 +5,12 @@
  */
 package restaruante.cliente;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author arahiza
@@ -24,7 +30,37 @@ public class lobby extends javax.swing.JFrame {
         jButton1.setVisible(false);
         jLabel2.setText(ind.nombres);
     }
-
+    public static int IDreser=0;
+   public int ReservaUnavez(){
+   try{
+            index ind= new index();
+            int IDcliente=ind.id;
+            conexion cone = new conexion();
+            Connection reg=cone.conexion();
+            Statement s =  reg.createStatement();
+            ResultSet r = s.executeQuery("call Unareserva('"+IDcliente+"')");
+            boolean encontrar = false;
+            int IDReserva=0;
+            
+            while(r.next()){ 
+            encontrar=true; 
+            IDReserva = r.getInt("IDreserva");
+                 
+                 
+            }
+            if(encontrar){
+            IDreser=IDReserva;
+            if (IDreser==1)
+            return 1;
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Acceso Denegado!!");
+            }
+        }catch(SQLException e){
+        System.out.println(e.getMessage());
+        }
+        return 0;
+        
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -476,10 +512,16 @@ public class lobby extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+       
+       int resultado=ReservaUnavez();
+       if(resultado==1){
+       JOptionPane.showMessageDialog(rootPane, "usted tiene una reserva");
+       }if(resultado==0){ 
+   
        reserva reser = new reserva();
        reser.setVisible(true);
        this.dispose();
-        
+       }
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked

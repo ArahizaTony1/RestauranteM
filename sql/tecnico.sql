@@ -24,3 +24,12 @@ CREATE PROCEDURE SeleccionarMesa (IN u VARCHAR(45))
 BEGIN
 SELECT Nmesas from restaurante where Nombre=u ;
 END;
+
+CREATE PROCEDURE Unareserva (IN u VARCHAR(45))
+BEGIN
+SELECT cliente.IDcliente,COUNT(Reserva.IDreserva) AS IDreserva,Reserva.fecha
+FROM cliente
+INNER JOIN Reserva ON cliente.IDcliente = Reserva.IDcliente
+where cliente.IDcliente=1 && Reserva.fecha=CURDATE(); 
+END;
+
